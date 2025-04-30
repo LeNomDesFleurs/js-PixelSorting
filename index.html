@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en-US" >
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- WP_HEAD() START -->
+<title>Pixel Sorting - Too Young Too Simple</title>
+<link rel="preload" as="style" href="https://use.typekit.net/xxe2lkh.css">
+<link rel="stylesheet" href="https://use.typekit.net/xxe2lkh.css">
+<meta name='robots' content='max-image-preview:large' />
+
+
+
+
+
+</ul></div></nav></div></div></div></div></header>
+<!-- Title and header -->
+		<section id="section-86-6" class=" ct-section" ><div class="ct-section-inner-wrap"><div id="div_block-89-6" class="ct-div-block" ><div id='inner_content-87-6' class='ct-inner-content'><div id="new_columns-9-1091" class="ct-new-columns" ><div id="div_block-10-1091" class="ct-div-block" ><div id="div_block-226-1091" class="ct-div-block" ><h3 id="headline-236-1091" class="ct-headline">Pixel Sorting</h3><div id="text_block-235-1091" class="ct-text-block" >is a tool that uses a pixel sorting algorithm to manipulate pixels of an image. It can transform your images into unique, and striking visual surprises.</div></div>
+      
+      <!-- drag and drop zone -->
+      <div id="dropArea" class="ct-div-block drop-area" ><div id="text_block-220-1091" class="ct-text-block dropAreaText" >Drag and drop an image here or click to select.</div></div><div id="div_block-240-1091" class="ct-div-block" >
+        <!-- download button -->
+        <div id="div_block-242-1091" class="ct-div-block" ><div id="div_block-243-1091" class="ct-div-block" ><div id="code_block-244-1091" class="ct-code-block" ><button id="download">Download</button></div></div></div></div><div id="div_block-51-1091" class="ct-div-block" >
+          <!-- parameters -->
+          <div id="text_block-37-1091" class="ct-text-block" >Min Threshold</div>
+          <div id="code_block-24-1091" class="ct-code-block" ><input type="range" id="minThreshold" min="0" max="255" value="0" class="slider">
+          </div></div>
+          <div id="div_block-63-1091" class="ct-div-block" ><div id="text_block-64-1091" class="ct-text-block" >Max Threshold</div><input type="range" id="maxThreshold" min="-1" max="256" value="40" class="slider">
+</div><div id="div_block-66-1091" class="ct-div-block" ><div id="text_block-67-1091" class="ct-text-block" >Segments</div><div id="code_block-68-1091" class="ct-code-block" ><input type="range" id="segments" min="1" max="25" value="1" class="slider">
+</div></div><div id="div_block-237-1091" class="ct-div-block" ><div id="text_block-238-1091" class="ct-text-block" >Randomness</div><div id="code_block-239-1091" class="ct-code-block" ><input type="range" id="segmentRandomness" min="1" max="100" value="1" class="slider">
+</div></div><div id="div_block-170-1091" class="ct-div-block" ><div id="text_block-171-1091" class="ct-text-block" >Sorting By</div><div id="div_block-172-1091" class="ct-div-block" ><div id="div_block-173-1091" class="ct-div-block" ><div id="code_block-174-1091" class="ct-code-block" ><button id="sortBrightness">Brightness</button></div></div><div id="div_block-175-1091" class="ct-div-block" ><div id="code_block-176-1091" class="ct-code-block" ><button id="sortHue">Hue</button></div></div></div><div id="div_block-211-1091" class="ct-div-block" ><div id="div_block-212-1091" class="ct-div-block" ><div id="code_block-213-1091" class="ct-code-block" ><button id="sortSaturation">Saturation</button></div></div><div id="div_block-214-1091" class="ct-div-block" ><div id="code_block-215-1091" class="ct-code-block" ><button id="sortRed">Red</button></div></div></div><div id="div_block-198-1091" class="ct-div-block" ><div id="div_block-199-1091" class="ct-div-block" ><div id="code_block-200-1091" class="ct-code-block" ><button id="sortGreen">Green</button></div></div><div id="div_block-201-1091" class="ct-div-block" ><div id="code_block-202-1091" class="ct-code-block" ><button id="sortBlue">Blue</button></div></div></div></div><div id="div_block-75-1091" class="ct-div-block" ><div id="text_block-76-1091" class="ct-text-block" >Sorting Direction</div><div id="div_block-80-1091" class="ct-div-block" ><div id="div_block-95-1091" class="ct-div-block" ><div id="code_block-158-1091" class="ct-code-block" ><button id="sortLeftToRight">Left</button></div></div><div id="div_block-92-1091" class="ct-div-block" ><div id="code_block-159-1091" class="ct-code-block" ><button id="sortRightToLeft">Right</button></div></div></div><div id="div_block-188-1091" class="ct-div-block" ><div id="div_block-189-1091" class="ct-div-block" ><div id="code_block-190-1091" class="ct-code-block" ><button id="sortTopToBottom">Top</button></div></div><div id="div_block-191-1091" class="ct-div-block" ><div id="code_block-192-1091" class="ct-code-block" ><button id="sortBottomToTop">Bottom</button></div></div></div></div></div><div id="div_block-15-1091" class="ct-div-block" ></div><div id="div_block-11-1091" class="ct-div-block" ><div id="code_block-8-1091" class="ct-code-block" >	<canvas id="imageCanvas"></canvas>  
+    <input type="file" id="imageInput" accept="image/*">
+
+
+
+<script type="text/javascript" id="ct-footer-js"></script><script type="text/javascript" id="ct_code_block_js_8">(function() {
+  document.getElementById('imageInput').addEventListener('change', handleImageUpload);
+  document.getElementById('minThreshold').addEventListener('input', updateImage);
+  document.getElementById('maxThreshold').addEventListener('input', updateImage);
+  document.getElementById('segments').addEventListener('input', updateImage);
+  document.getElementById('segmentRandomness').addEventListener('input', updateImage);
+
+  document.getElementById('sortBrightness').addEventListener('click', () => setSortingType('brightness'));
+  document.getElementById('sortHue').addEventListener('click', () => setSortingType('hue'));
+  document.getElementById('sortSaturation').addEventListener('click', () => setSortingType('saturation'));
+  document.getElementById('sortRed').addEventListener('click', () => setSortingType('red'));
+  document.getElementById('sortGreen').addEventListener('click', () => setSortingType('green'));
+  document.getElementById('sortBlue').addEventListener('click', () => setSortingType('blue'));
+
+  document.getElementById('sortLeftToRight').addEventListener('click', () => setSortingDirection('left-to-right'));
+  document.getElementById('sortRightToLeft').addEventListener('click', () => setSortingDirection('right-to-left'));
+  document.getElementById('sortTopToBottom').addEventListener('click', () => setSortingDirection('top-to-bottom'));
+  document.getElementById('sortBottomToTop').addEventListener('click', () => setSortingDirection('bottom-to-top'));
+	
+  document.getElementById('download').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'sorted-image.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+
+  const dropArea = document.getElementById('dropArea');
+  dropArea.addEventListener('dragover', handleDragOver, false);
+  dropArea.addEventListener('drop', handleDrop, false);
+  dropArea.addEventListener('click', () => document.getElementById('imageInput').click());
+
+  let originalImageData;
+  let sortingType = 'brightness';
+  let sortingDirection = 'left-to-right';
+  const canvas = document.getElementById('imageCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Load the default image on page load
+  window.addEventListener('load', () => {
+    const defaultImageUrl = 'rose.jpg';
+    loadImage(defaultImageUrl);
+  });
+
+  function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    loadImage(URL.createObjectURL(file));
+  }
+
+  function handleDragOver(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'copy';
+  }
+
+  function handleDrop(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const file = event.dataTransfer.files[0];
+    if (!file) return;
+
+    loadImage(URL.createObjectURL(file));
+  }
+
+  function loadImage(url) {
+    const img = new Image();
+    img.crossOrigin = "Anonymous"; // To avoid CORS issues
+    img.onload = function() {
+      const scale = 800 / img.width;
+      img.width *= scale;
+      img.height *= scale;
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      originalImageData = ctx.getImageData(0, 0, img.width, img.height);
+      updateImage();
+    };
+    img.src = url;
+  }
+
+  function setSortingType(type) {
+    sortingType = type;
+    updateImage();
+  }
+
+  function setSortingDirection(direction) {
+    sortingDirection = direction;
+    updateImage();
+  }
+
+  function updateImage() {
+    if (!originalImageData) return;
+
+    const minThreshold = parseInt(document.getElementById('minThreshold').value, 10);
+    const maxThreshold = parseInt(document.getElementById('maxThreshold').value, 10);
+    const segments = parseInt(document.getElementById('segments').value, 10);
+    const segmentRandomness = parseInt(document.getElementById('segmentRandomness').value, 10) / 100;
+    let imageData = new ImageData(
+      new Uint8ClampedArray(originalImageData.data),
+      originalImageData.width,
+      originalImageData.height
+    );
+
+    pixelSort(imageData, minThreshold, maxThreshold, sortingType, sortingDirection, segments, segmentRandomness);
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  function pixelSort(imageData, minThreshold, maxThreshold, sortingType, sortingDirection, segments, segmentRandomness) {
+    const data = imageData.data;
+    const width = imageData.width;
+    const height = imageData.height;
+    const reverseOrder = minThreshold > maxThreshold;
+
+    function getRandomSegments(length, segments, randomness) {
+      const segmentSizes = [];
+      let remainingLength = length;
+
+      for (let i = 0; i < segments - 1; i++) {
+        const segmentSize = Math.floor((remainingLength / (segments - i)) * (1 - randomness + Math.random() * randomness));
+        segmentSizes.push(segmentSize);
+        remainingLength -= segmentSize;
+      }
+      segmentSizes.push(remainingLength);
+
+      return segmentSizes;
+    }
+
+    if (sortingDirection === 'left-to-right' || sortingDirection === 'right-to-left') {
+      for (let y = 0; y < height; y++) {
+        let row = [];
+        for (let x = 0; x < width; x++) {
+          const index = (y * width + x) * 4;
+          const r = data[index];
+          const g = data[index + 1];
+          const b = data[index + 2];
+          const a = data[index + 3];
+
+          let value;
+          switch (sortingType) {
+            case 'hue':
+              value = rgbToHue(r, g, b);
+              break;
+            case 'saturation':
+              value = rgbToSaturation(r, g, b);
+              break;
+            case 'red':
+              value = r;
+              break;
+            case 'green':
+              value = g;
+              break;
+            case 'blue':
+              value = b;
+              break;
+            case 'brightness':
+            default:
+              value = rgbToBrightness(r, g, b);
+              break;
+          }
+
+          row.push({ r, g, b, a, value, inRange: reverseOrder ? value <= minThreshold && value >= maxThreshold : value >= minThreshold && value <= maxThreshold });
+        }
+
+        if (sortingDirection === 'right-to-left') {
+          row.reverse();
+        }
+
+        // Divide the row into random segments and sort each segment
+        const segmentSizes = getRandomSegments(width, segments, segmentRandomness);
+        let start = 0;
+        for (let segmentSize of segmentSizes) {
+          const end = start + segmentSize;
+          const segment = row.slice(start, end);
+
+          segment.sort((a, b) => {
+            if (a.inRange && b.inRange) {
+              return reverseOrder ? b.value - a.value : a.value - b.value;
+            }
+            return a.inRange ? -1 : 1;
+          });
+
+          for (let i = start; i < end; i++) {
+            row[i] = segment[i - start];
+          }
+          start = end;
+        }
+
+        if (sortingDirection === 'right-to-left') {
+          row.reverse();
+        }
+
+        for (let x = 0; x < width; x++) {
+          const index = (y * width + x) * 4;
+          const pixel = row[x];
+          data[index] = pixel.r;
+          data[index + 1] = pixel.g;
+          data[index + 2] = pixel.b;
+          data[index + 3] = pixel.a;
+        }
+      }
+    } else {
+      for (let x = 0; x < width; x++) {
+        let column = [];
+        for (let y = 0; y < height; y++) {
+          const index = (y * width + x) * 4;
+          const r = data[index];
+          const g = data[index + 1];
+          const b = data[index + 2];
+          const a = data[index + 3];
+
+          let value;
+          switch (sortingType) {
+            case 'hue':
+              value = rgbToHue(r, g, b);
+              break;
+            case 'saturation':
+              value = rgbToSaturation(r, g, b);
+              break;
+            case 'red':
+              value = r;
+              break;
+            case 'green':
+              value = g;
+              break;
+            case 'blue':
+              value = b;
+              break;
+            case 'brightness':
+            default:
+              value = rgbToBrightness(r, g, b);
+              break;
+          }
+
+          column.push({ r, g, b, a, value, inRange: reverseOrder ? value <= minThreshold && value >= maxThreshold : value >= minThreshold && value <= maxThreshold });
+        }
+
+        if (sortingDirection === 'bottom-to-top') {
+          column.reverse();
+        }
+
+        // Divide the column into random segments and sort each segment
+        const segmentSizes = getRandomSegments(height, segments, segmentRandomness);
+        let start = 0;
+        for (let segmentSize of segmentSizes) {
+          const end = start + segmentSize;
+          const segment = column.slice(start, end);
+
+          segment.sort((a, b) => {
+            if (a.inRange && b.inRange) {
+              return reverseOrder ? b.value - a.value : a.value - b.value;
+            }
+            return a.inRange ? -1 : 1;
+          });
+
+          for (let i = start; i < end; i++) {
+            column[i] = segment[i - start];
+          }
+          start = end;
+        }
+
+        if (sortingDirection === 'bottom-to-top') {
+          column.reverse();
+        }
+
+        for (let y = 0; y < height; y++) {
+          const index = (y * width + x) * 4;
+          const pixel = column[y];
+          data[index] = pixel.r;
+          data[index + 1] = pixel.g;
+          data[index + 2] = pixel.b;
+          data[index + 3] = pixel.a;
+        }
+      }
+    }
+  }
+
+  function rgbToBrightness(r, g, b) {
+    return 0.299 * r + 0.587 * g + 0.114 * b;
+  }
+
+  function rgbToHue(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h;
+
+    if (max === min) {
+      h = 0;
+    } else if (max === r) {
+      h = (60 * ((g - b) / (max - min)) + 360) % 360;
+    } else if (max === g) {
+      h = 60 * ((b - r) / (max - min)) + 120;
+    } else {
+      h = 60 * ((r - g) / (max - min)) + 240;
+    }
+
+    return h;
+  }
+
+  function rgbToSaturation(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const l = (max + min) / 2;
+    if (max === min) {
+      return 0;
+    } else {
+      let s = (l < 0.5) ? (max - min) / (max + min) : (max - min) / (2.0 - max - min);
+      return Math.round(s * 255);
+    }
+  }
+	
+})();
+
+</script>
+<style type="text/css" id="ct_code_block_css_8">.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #e5e0dd;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .5s;
+  transition: opacity .5s;
+}
+
+.slider:hover {
+  opacity: .8;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #e75e1d;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #e75e1d;
+  cursor: pointer;
+}
+
+
+#dropArea {
+  border: 2px dashed #ccc;
+  cursor: pointer;
+}
+
+
+#imageInput {
+  display: none;
+}
+
+#imageCanvas {
+
+  width: 100%;
+}
+</style>
+</body>
+</html>
+
+<!-- Cache served by breeze CACHE - Last modified: Thu, 10 Apr 2025 20:13:30 GMT -->

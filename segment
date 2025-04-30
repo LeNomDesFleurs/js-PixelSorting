@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Usage: ./create_segmented_image.sh 800x600 10 45
+
+if [ $# -ne 3 ]; then
+  echo "Usage: $0 <resolution> <segments> <angle>"
+  exit 1
+fi
+
+RESOLUTION=$1
+SEGMENTS=$2
+ANGLE=$3
+OUTPUT="output.png"
+
+WIDTH=$(echo $RESOLUTION | cut -d'x' -f1)
+HEIGHT=$(echo $RESOLUTION | cut -d'x' -f2)
+
+# Run Python code using heredoc
+python3 - <<END
+import numpy as np
+from PIL import Image, ImageDraw
+
+width, height = $WIDTH, $HEIGHT
+segments = $SEGMENTS
+angle_deg = $ANGLE
+output_path = "$OUTPUT"
+
+image = Image.new("RGB", (width, height), "black")
+draw = ImageDraw.Draw(image)
+
+angle_rad = np.deg2rad(angle_deg % 180)
+cos_a = np.cos(angle_rad)
+sin_a = np.sin(angle_rad)
+
+if angle_deg % 180 == 0:
+    spacing = height / segments
+    for i in range(segments):
+        y_start = int(i * spacing)
+        y_end = int((i + 1) * spacing - 1)
+        draw.rectangle([(0, y_start), (width - 1, y_end)], fill="white")
+
+elif angle_deg % 180 == 90:
+    spacing = width / segments
+    for i in range(segments):
+        x_start = int(i * spacing)
+        x_end = int((i + 1) * spacing - 1)
+        draw.rectangle([(x_start, 0), (x_end, height - 1)], fill="white")
+else:
+    diag = int(np.hypot(width, height))
+    spacing = diag / segments
+
+    for y in range(height):
+        for x in range(width):
+            projection = x * cos_a + y * sin_a
+            if projection >= 0 and int((projection % spacing)) > 1:
+                image.putpixel((x, y), (255, 255, 255))
+
+image.save(output_path)
+print(f"Image saved to {output_path}")
+END
